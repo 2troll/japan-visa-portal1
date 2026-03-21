@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Visa Eligibility Quiz | Japan Visa Guide Portal</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="visa-styles.css">
+    <style>
+        .quiz-container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        .question-card {
+            background: var(--card-bg);
+            border-radius: 15px;
+            padding: 2rem;
+            margin-bottom: 1.5rem;
+            border: 1px solid var(--border);
+        }
+        .question-number {
+            color: var(--accent);
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+        .question-text {
+            font-size: 1.2rem;
+            margin-bottom: 1.5rem;
+        }
+        .options {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+        .option {
+            padding: 1rem 1.5rem;
+            background: var(--primary);
+            border: 2px solid var(--border);
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        .option:hover {
+            border-color: var(--accent);
+            background: rgba(233, 69, 96, 0.1);
+        }
+        .option.selected {
+            background: var(--accent);
+            border-color: var(--accent);
+            color: white;
+        }
+        .result-card {
+            background: linear-gradient(135deg, rgba(76, 175, 80, 0.1), rgba(76, 175, 80, 0.05));
+            border: 2px solid var(--success);
+            border-radius: 15px;
+            padding: 2rem;
+            text-align: center;
+        }
+        .result-card h2 {
+            color: var(--success);
+            margin-bottom: 1rem;
+        }
+        .result-card .visa-recommendation {
+            font-size: 1.5rem;
+            color: var(--text);
+            margin-bottom: 1rem;
+        }
+        .btn-restart {
+            padding: 1rem 2rem;
+            background: var(--accent);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1rem;
+            margin-top: 1rem;
+        }
+        .progress-bar {
+            width: 100%;
+            height: 8px;
+            background: var(--card-bg);
+            border-radius: 4px;
+            margin-bottom: 2rem;
+            overflow: hidden;
+        }
+        .progress-fill {
+            height: 100%;
+            background: var(--accent);
+            border-radius: 4px;
+            transition: width 0.3s;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo">
+                <span class="logo-icon">🇯🇵</span>
+                <span>JapanVisaGuide</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="tools.html">← Back to Tools</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="visa-page">
+        <header class="visa-header">
+            <div class="container">
+                <div class="visa-title">
+                    <div class="flag">🎯</div>
+                    <h1>Visa Eligibility Quiz</h1>
+                </div>
+            </div>
+        </header>
+
+        <section class="tab-section">
+            <div class="quiz-container">
+                <div class="progress-bar">
+                    <div class="progress-fill" id="progress" style="width: 0%"></div>
+                </div>
+
+                <div id="quiz-content">
+                    <!-- Questions will be loaded here -->
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <p class="footer-copyright">© 2026 Japan Visa Guide Portal. Built with 🎯 by Luigi.</p>
+        </div>
+    </footer>
+
+    <script>
+        const questions = [
+            {
+                id: 1,
+                text: "What is your primary purpose for going to Japan?",
+                options: [
+                    { value: "work", text: "Work or Employment", next: 2 },
+                    { value: "study", text: "Study or Education", next: 3 },
+                    { value: "tourist", text: "Tourism or Short Visit", next: 4 },
+                    { value: "residency", text: "Long-term Settlement", next: 5 }
+                ]
+            },
+            {
+                id: 2,
+                text: "Do you have a job offer from a Japanese company?",
+                options: [
+                    { value: "has_offer", text: "Yes, I have a job offer", result: "work" },
+                    { value: "seeking", text: "No, I'm still looking", result: "tourist" },
+                    { value: "transfer", text: "Internal company transfer", result: "work" }
+                ]
+            },
+            {
+                id: 3,
+                text: "What type of education are you pursuing?",
+                options: [
+                    { value: "university", text: "University Degree", result: "study" },
+                    { value: "language", text: "Japanese Language School", result: "study" },
+                    { value: "research", text: "Research/Exchange Program", result: "study" }
+                ]
+            },
+            {
+                id: 4,
+                text: "How long do you plan to stay?",
+                options: [
+                    { value: "short", text: "Less than 90 days", result: "tourist" },
+                    { value: "medium", text: "3-6 months", result: "study" },
+                    { value: "long", text: "Longer than 6 months", result: "work" }
+                ]
+            },
+            {
+                id: 5,
+                text: "Do you have a spouse or family member who is a Japanese citizen or permanent resident?",
+                options: [
+                    { value: "spouse", text: "Yes", result: "residency" },
+                    { value: "no_spouse", text: "No", result: "work" }
+                ]
+            }
+        ];
+
+        const results = {
+            work: {
+                title: "Work Visa",
+                description: "You should apply for a Work Visa (Engineer/Specialist in Humanities). This requires a job offer from a Japanese employer.",
+                link: "work-visa-guide.html"
+            },
+            study: {
+                title: "Student Visa",
+                description: "You should apply for a Student Visa. This requires admission to a Japanese educational institution.",
+                link: "study-visa-guide.html"
+            },
+            tourist: {
+                title: "Tourist/Visitor",
+                description: "You may not need a visa depending on your nationality. Check your country's requirements.",
+                link: "tourist-visa-guide.html"
+            },
+            residency: {
+                title: "Residency Path",
+                description: "You may be eligible for a Spouse or Family visa, which can lead to permanent residency.",
+                link: "residency-visa-guide.html"
+            }
+        };
+
+        let currentQuestion = 0;
+
+        function loadQuestion() {
+            const q = questions[currentQuestion];
+            const progress = ((currentQuestion + 1) / questions.length) * 100;
+            document.getElementById('progress').style.width = progress + '%';
+
+            let html = `
+                <div class="question-card">
+                    <div class="question-number">Question ${currentQuestion + 1} of ${questions.length}</div>
+                    <div class="question-text">${q.text}</div>
+                    <div class="options">
+                        ${q.options.map((opt, i) => `
+                            <div class="option" onclick="handleAnswer(${i})">
+                                ${opt.text}
+                            </div>
+                        `).join('')}
+                    </div>
+                </div>
+            `;
+            document.getElementById('quiz-content').innerHTML = html;
+        }
+
+        function handleAnswer(optionIndex) {
+            const q = questions[currentQuestion];
+            const selected = q.options[optionIndex];
+
+            if (selected.result) {
+                showResult(selected.result);
+            } else if (selected.next) {
+                currentQuestion = questions.findIndex(q => q.id === selected.next);
+                loadQuestion();
+            }
+        }
+
+        function showResult(resultKey) {
+            const result = results[resultKey];
+            document.getElementById('progress').style.width = '100%';
+            document.getElementById('quiz-content').innerHTML = `
+                <div class="result-card">
+                    <h2>Recommended Visa Type</h2>
+                    <div class="visa-recommendation">${result.title}</div>
+                    <p>${result.description}</p>
+                    <a href="${result.link}" class="btn-tool">View ${result.title} Guide →</a>
+                    <br><br>
+                    <button class="btn-restart" onclick="restartQuiz()">Restart Quiz</button>
+                </div>
+            `;
+        }
+
+        function restartQuiz() {
+            currentQuestion = 0;
+            loadQuestion();
+        }
+
+        // Start quiz
+        loadQuestion();
+    </script>
+</body>
+</html>

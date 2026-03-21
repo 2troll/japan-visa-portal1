@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Tools | Japan Visa Guide Portal</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="visa-styles.css">
+    <style>
+        .tools-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            padding: 2rem 0;
+        }
+        .tool-card {
+            background: var(--card-bg);
+            border-radius: 15px;
+            padding: 2rem;
+            border: 1px solid var(--border);
+            transition: transform 0.3s, border-color 0.3s;
+            cursor: pointer;
+        }
+        .tool-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent);
+        }
+        .tool-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+        .tool-card h3 {
+            color: var(--accent);
+            margin-bottom: 0.5rem;
+        }
+        .tool-card p {
+            color: var(--text-muted);
+            margin-bottom: 1rem;
+        }
+        .btn-tool {
+            display: inline-block;
+            padding: 0.8rem 1.5rem;
+            background: var(--accent);
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 600;
+        }
+        .btn-tool:hover {
+            background: var(--accent-hover);
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo">
+                <span class="logo-icon">🇯🇵</span>
+                <span>JapanVisaGuide</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="work-visa-guide.html">Work</a></li>
+                <li><a href="study-visa-guide.html">Study</a></li>
+                <li><a href="tourist-visa-guide.html">Tourist</a></li>
+                <li><a href="residency-visa-guide.html">Residency</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="visa-page">
+        <header class="visa-header">
+            <div class="container">
+                <div class="visa-title">
+                    <div class="flag">🛠️</div>
+                    <h1>Interactive Visa Tools</h1>
+                </div>
+            </div>
+        </header>
+
+        <section class="tab-section">
+            <div class="container">
+                <p style="text-align: center; margin-bottom: 2rem; color: var(--text-muted);">Use these tools to plan your Japan visa journey:</p>
+
+                <div class="tools-grid">
+                    <div class="tool-card" onclick="location.href='quiz.html'">
+                        <div class="tool-icon">🎯</div>
+                        <h3>Visa Eligibility Quiz</h3>
+                        <p>Answer a few questions to find the best visa type for your situation.</p>
+                        <a href="quiz.html" class="btn-tool">Start Quiz</a>
+                    </div>
+
+                    <div class="tool-card" onclick="location.href='checklist-generator.html'">
+                        <div class="tool-icon">📋</div>
+                        <h3>Document Checklist Generator</h3>
+                        <p>Generate a personalized checklist of required documents for your visa.</p>
+                        <a href="checklist-generator.html" class="btn-tool">Generate Checklist</a>
+                    </div>
+
+                    <div class="tool-card" onclick="location.href='timeline-calculator.html'">
+                        <div class="tool-icon">📅</div>
+                        <h3>Timeline Calculator</h3>
+                        <p>Estimate your visa approval date based on your country and visa type.</p>
+                        <a href="timeline-calculator.html" class="btn-tool">Calculate Timeline</a>
+                    </div>
+
+                    <div class="tool-card" onclick="location.href='cost-calculator.html'">
+                        <div class="tool-icon">💰</div>
+                        <h3>Cost Calculator</h3>
+                        <p>Calculate total costs including fees, documents, and processing.</p>
+                        <a href="cost-calculator.html" class="btn-tool">Calculate Costs</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-logo">
+                <span class="logo-icon">🇯🇵</span>
+                <span>JapanVisaGuide</span>
+            </div>
+            <p class="footer-copyright">© 2026 Japan Visa Guide Portal. Built with 🎯 by Luigi.</p>
+        </div>
+    </footer>
+</body>
+</html>

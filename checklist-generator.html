@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document Checklist Generator | Japan Visa Guide Portal</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="visa-styles.css">
+    <style>
+        .generator-container {
+            max-width: 700px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--accent);
+            font-weight: 600;
+        }
+        .form-group select {
+            width: 100%;
+            padding: 1rem;
+            border-radius: 8px;
+            border: 2px solid var(--border);
+            background: var(--primary);
+            color: var(--text);
+            font-size: 1rem;
+        }
+        .btn-generate {
+            width: 100%;
+            padding: 1rem;
+            background: var(--accent);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            margin-bottom: 2rem;
+        }
+        .btn-generate:hover {
+            background: var(--accent-hover);
+        }
+        .checklist-output {
+            background: var(--card-bg);
+            border-radius: 15px;
+            padding: 2rem;
+            border: 1px solid var(--border);
+        }
+        .checklist-header {
+            text-align: center;
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 2px solid var(--border);
+        }
+        .checklist-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            padding: 1rem;
+            margin-bottom: 0.5rem;
+            background: var(--primary);
+            border-radius: 8px;
+        }
+        .checkbox {
+            width: 24px;
+            height: 24px;
+            border: 2px solid var(--accent);
+            border-radius: 4px;
+            flex-shrink: 0;
+        }
+        .checklist-meta {
+            display: flex;
+            gap: 2rem;
+            margin-top: 2rem;
+            padding-top: 1rem;
+            border-top: 2px solid var(--border);
+        }
+        .meta-item {
+            text-align: center;
+        }
+        .meta-value {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--accent);
+        }
+        .btn-download {
+            display: inline-block;
+            padding: 1rem 2rem;
+            background: var(--success);
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 600;
+            margin-top: 1rem;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo">
+                <span class="logo-icon">🇯🇵</span>
+                <span>JapanVisaGuide</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="tools.html">← Back to Tools</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="visa-page">
+        <header class="visa-header">
+            <div class="container">
+                <div class="visa-title">
+                    <div class="flag">📋</div>
+                    <h1>Document Checklist Generator</h1>
+                </div>
+            </div>
+        </header>
+
+        <section class="tab-section">
+            <div class="generator-container">
+                <div class="form-group">
+                    <label>Select Your Country</label>
+                    <select id="country">
+                        <option value="">-- Choose Country --</option>
+                        <option value="china">🇨🇳 China</option>
+                        <option value="korea">🇰🇷 South Korea</option>
+                        <option value="thailand">🇹🇭 Thailand</option>
+                        <option value="philippines">🇵🇭 Philippines</option>
+                        <option value="vietnam">🇻🇳 Vietnam</option>
+                        <option value="indonesia">🇮🇩 Indonesia</option>
+                        <option value="us">🇺🇸 United States</option>
+                        <option value="uk">🇬🇧 United Kingdom</option>
+                        <option value="germany">🇩🇪 Germany</option>
+                        <option value="france">🇫🇷 France</option>
+                        <option value="spain">🇪🇸 Spain</option>
+                        <option value="brazil">🇧🇷 Brazil</option>
+                        <option value="argentina">🇦🇷 Argentina</option>
+                        <option value="uruguay">🇺🇾 Uruguay</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>Select Visa Type</label>
+                    <select id="visaType">
+                        <option value="">-- Choose Visa Type --</option>
+                        <option value="work">💼 Work Visa</option>
+                        <option value="study">📚 Student Visa</option>
+                        <option value="tourist">✈️ Tourist Visa</option>
+                        <option value="residency">🏠 Permanent Residency</option>
+                    </select>
+                </div>
+
+                <button class="btn-generate" onclick="generateChecklist()">Generate Checklist</button>
+
+                <div id="checklist-output" class="checklist-output" style="display: none;">
+                    <!-- Checklist will be generated here -->
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        const checklists = {
+            work: [
+                "Valid passport (6+ months beyond intended stay)",
+                "Completed visa application form",
+                "Passport-sized photo (4.5cm × 3.5cm, white background)",
+                "Certificate of Eligibility (COE) from employer",
+                "Employment contract or job offer letter",
+                "University degree certificate (authenticated/apostilled)",
+                "Resume/CV with work history",
+                "Company registration documents from Japan",
+                "Proof of financial ability (bank statements)",
+                "Flight itinerary (recommended)"
+            ],
+            study: [
+                "Valid passport",
+                "Completed visa application form",
+                "Passport-sized photo (4.5cm × 3.5cm)",
+                "Certificate of Eligibility (COE) from school",
+                "Admission letter from Japanese institution",
+                "Proof of financial ability (¥1,000,000+ per year)",
+                "Academic transcripts and diplomas",
+                "Statement of purpose",
+                "Accommodation details in Japan",
+                "Health certificate (if required)"
+            ],
+            tourist: [
+                "Valid passport (6+ months validity)",
+                "Completed visa application form (if visa required)",
+                "Passport-sized photo",
+                "Flight itinerary (return ticket)",
+                "Hotel reservations or accommodation proof",
+                "Bank statement showing sufficient funds",
+                "Employment letter or business registration",
+                "Travel insurance (recommended)"
+            ],
+            residency: [
+                "Application for Permanent Residence",
+                "Passport and current residence card",
+                "Passport-sized photo",
+                "Reason letter for permanent residence",
+                "Proof of residence in Japan (5+ years)",
+                "Employment certificate and tax payment records",
+                "Asset and income documentation",
+                "Family registration documents (if applicable)",
+                "Japanese language proficiency proof (N2 recommended)"
+            ]
+        };
+
+        const specialRequirements = {
+            china: ["Degree authenticated by Chinese authorities (MOE + MFA)", "Medical examination at designated hospital"],
+            philippines: ["NBI clearance", "Additional financial documentation", "Pre-departure orientation certificate"],
+            us: ["FBI background check (for some positions)", "Apostille on documents"],
+            uk: ["Post-Brexit additional verification", "Points-based system consideration"]
+        };
+
+        function generateChecklist() {
+            const country = document.getElementById('country').value;
+            const visaType = document.getElementById('visaType').value;
+
+            if (!country || !visaType) {
+                alert('Please select both country and visa type');
+                return;
+            }
+
+            const baseChecklist = checklists[visaType] || [];
+            const special = specialRequirements[country] || [];
+            const allItems = [...baseChecklist, ...special];
+
+            const countryNames = {
+                china: 'China', korea: 'South Korea', thailand: 'Thailand', philippines: 'Philippines',
+                vietnam: 'Vietnam', indonesia: 'Indonesia', us: 'United States', uk: 'United Kingdom',
+                germany: 'Germany', france: 'France', spain: 'Spain', brazil: 'Brazil',
+                argentina: 'Argentina', uruguay: 'Uruguay'
+            };
+
+            const visaNames = { work: 'Work Visa', study: 'Student Visa', tourist: 'Tourist Visa', residency: 'Permanent Residency' };
+
+            const today = new Date().toLocaleDateString();
+
+            let html = `
+                <div class="checklist-header">
+                    <h2>Document Checklist</h2>
+                    <p><strong>${countryNames[country]} → Japan</strong></p>
+                    <p>Visa Type: ${visaNames[visaType]}</p>
+                    <p style="color: var(--text-muted); font-size: 0.9rem;">Generated: ${today}</p>
+                </div>
+
+                <div class="checklist-items">
+                    ${allItems.map((item, i) => `
+                        <div class="checklist-item">
+                            <div class="checkbox"></div>
+                            <div>${i + 1}. ${item}</div>
+                        </div>
+                    `).join('')}
+                </div>
+
+                <div class="checklist-meta">
+                    <div class="meta-item">
+                        <div class="meta-value">${allItems.length}</div>
+                        <div>Documents Required</div>
+                    </div>
+                    <div class="meta-item">
+                        <div class="meta-value">2-4</div>
+                        <div>Weeks to Prepare</div>
+                    </div>
+                </div>
+
+                <div style="text-align: center; margin-top: 1.5rem;">
+                    <a href="#" class="btn-download" onclick="window.print(); return false;">🖨️ Print Checklist</a>
+                </div>
+
+                <div style="margin-top: 2rem; padding: 1rem; background: rgba(233, 69, 96, 0.1); border-radius: 8px; border-left: 4px solid var(--accent);">
+                    <p><strong>💡 Tip:</strong> Start gathering documents early. Authentication and translation can take several weeks.</p>
+                </div>
+            `;
+
+            document.getElementById('checklist-output').innerHTML = html;
+            document.getElementById('checklist-output').style.display = 'block';
+        }
+    </script>
+</body>
+</html>
