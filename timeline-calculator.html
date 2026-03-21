@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Timeline Calculator | Japan Visa Guide Portal</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="visa-styles.css">
+    <style>
+        .calculator-container {
+            max-width: 700px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        .result-box {
+            background: var(--card-bg);
+            border-radius: 15px;
+            padding: 2rem;
+            margin-top: 2rem;
+            border: 2px solid var(--accent);
+            text-align: center;
+        }
+        .timeline-display {
+            display: flex;
+            justify-content: space-around;
+            margin: 2rem 0;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+        .timeline-item {
+            text-align: center;
+            padding: 1rem;
+        }
+        .timeline-date {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: var(--accent);
+        }
+        .timeline-label {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo">
+                <span class="logo-icon">🇯🇵</span>
+                <span>JapanVisaGuide</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="tools.html">← Back to Tools</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="visa-page">
+        <header class="visa-header">
+            <div class="container">
+                <div class="visa-title">
+                    <div class="flag">📅</div>
+                    <h1>Timeline Calculator</h1>
+                </div>
+            </div>
+        </header>
+
+        <section class="tab-section">
+            <div class="calculator-container">
+                <div class="form-group">
+                    <label>Select Your Country</label>
+                    <select id="country">
+                        <option value="">-- Choose Country --</option>
+                        <option value="us">🇺🇸 United States (3-6 months)</option>
+                        <option value="uk">🇬🇧 United Kingdom (2-4 months)</option>
+                        <option value="germany">🇩🇪 Germany (2-4 months)</option>
+                        <option value="france">🇫🇷 France (2-4 months)</option>
+                        <option value="spain">🇪🇸 Spain (2-4 months)</option>
+                        <option value="china">🇨🇳 China (2-4 months)</option>
+                        <option value="korea">🇰🇷 South Korea (1-3 months)</option>
+                        <option value="thailand">🇹🇭 Thailand (2-3 months)</option>
+                        <option value="philippines">🇵🇭 Philippines (2-4 months)</option>
+                        <option value="vietnam">🇻🇳 Vietnam (2-4 months)</option>
+                        <option value="indonesia">🇮🇩 Indonesia (2-4 months)</option>
+                        <option value="brazil">🇧🇷 Brazil (2-4 months)</option>
+                        <option value="argentina">🇦🇷 Argentina (2-4 months)</option>
+                        <option value="uruguay">🇺🇾 Uruguay (2-4 months)</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>Select Visa Type</label>
+                    <select id="visaType">
+                        <option value="">-- Choose Visa Type --</option>
+                        <option value="work">💼 Work Visa</option>
+                        <option value="study">📚 Student Visa</option>
+                        <option value="tourist">✈️ Tourist Visa</option>
+                        <option value="residency">🏠 Permanent Residency</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>Application Start Date</label>
+                    <input type="date" id="startDate" style="width: 100%; padding: 1rem; border-radius: 8px; border: 2px solid var(--border); background: var(--primary); color: var(--text);">
+                </div>
+
+                <button class="btn-generate" onclick="calculateTimeline()">Calculate Timeline</button>
+
+                <div id="result" class="result-box" style="display: none;">
+                    <!-- Results will appear here -->
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        // Set default date to today
+        document.getElementById('startDate').valueAsDate = new Date();
+
+        function calculateTimeline() {
+            const country = document.getElementById('country').value;
+            const visaType = document.getElementById('visaType').value;
+            const startDate = new Date(document.getElementById('startDate').value);
+
+            if (!country || !visaType || !startDate) {
+                alert('Please fill in all fields');
+                return;
+            }
+
+            const timelines = {
+                work: { min: 60, max: 180, avg: 120 },
+                study: { min: 90, max: 210, avg: 150 },
+                tourist: { min: 7, max: 21, avg: 14 },
+                residency: { min: 180, max: 365, avg: 270 }
+            };
+
+            const t = timelines[visaType];
+            const minDate = new Date(startDate);
+            const maxDate = new Date(startDate);
+            const avgDate = new Date(startDate);
+
+            minDate.setDate(minDate.getDate() + t.min);
+            maxDate.setDate(maxDate.getDate() + t.max);
+            avgDate.setDate(avgDate.getDate() + t.avg);
+
+            const formatDate = (d) => d.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+
+            document.getElementById('result').innerHTML = `
+                <h2>⏱️ Estimated Timeline</h2>
+                <div class="timeline-display">
+                    <div class="timeline-item">
+                        <div class="timeline-date">${formatDate(minDate)}</div>
+                        <div class="timeline-label">Earliest</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-date">${formatDate(avgDate)}</div>
+                        <div class="timeline-label">Most Likely</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-date">${formatDate(maxDate)}</div>
+                        <div class="timeline-label">Latest</div>
+                    </div>
+                </div>
+                <p style="color: var(--text-muted); margin-top: 1.5rem;">
+                    ⚠️ This is an estimate based on typical processing times. Actual times may vary.
+                </p>
+            `;
+            document.getElementById('result').style.display = 'block';
+        }
+    </script>
+</body>
+</html>

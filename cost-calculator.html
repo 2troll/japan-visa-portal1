@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cost Calculator | Japan Visa Guide Portal</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="visa-styles.css">
+    <style>
+        .cost-calculator {
+            max-width: 700px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        .cost-breakdown {
+            background: var(--card-bg);
+            border-radius: 15px;
+            padding: 2rem;
+            margin-top: 2rem;
+        }
+        .cost-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 1rem 0;
+            border-bottom: 1px solid var(--border);
+        }
+        .cost-row:last-child {
+            border-bottom: none;
+        }
+        .cost-row.total {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: var(--accent);
+            border-top: 2px solid var(--accent);
+            margin-top: 1rem;
+            padding-top: 1rem;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo">
+                <span class="logo-icon">🇯🇵</span>
+                <span>JapanVisaGuide</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="tools.html">← Back to Tools</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="visa-page">
+        <header class="visa-header">
+            <div class="container">
+                <div class="visa-title">
+                    <div class="flag">💰</div>
+                    <h1>Cost Calculator</h1>
+                </div>
+            </div>
+        </header>
+
+        <section class="tab-section">
+            <div class="cost-calculator">
+                <div class="form-group">
+                    <label>Select Your Country</label>
+                    <select id="country">
+                        <option value="">-- Choose Country --</option>
+                        <option value="us">🇺🇸 United States</option>
+                        <option value="uk">🇬🇧 United Kingdom</option>
+                        <option value="germany">🇩🇪 Germany</option>
+                        <option value="france">🇫🇷 France</option>
+                        <option value="spain">🇪🇸 Spain</option>
+                        <option value="china">🇨🇳 China</option>
+                        <option value="korea">🇰🇷 South Korea</option>
+                        <option value="thailand">🇹🇭 Thailand</option>
+                        <option value="philippines">🇵🇭 Philippines</option>
+                        <option value="vietnam">🇻🇳 Vietnam</option>
+                        <option value="indonesia">🇮🇩 Indonesia</option>
+                        <option value="brazil">🇧🇷 Brazil</option>
+                        <option value="argentina">🇦🇷 Argentina</option>
+                        <option value="uruguay">🇺🇾 Uruguay</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>Select Visa Type</label>
+                    <select id="visaType">
+                        <option value="">-- Choose Visa Type --</option>
+                        <option value="work">💼 Work Visa</option>
+                        <option value="study">📚 Student Visa</option>
+                        <option value="tourist">✈️ Tourist Visa</option>
+                        <option value="residency">🏠 Permanent Residency</option>
+                    </select>
+                </div>
+
+                <button class="btn-generate" onclick="calculateCosts()">Calculate Costs</button>
+
+                <div id="costResult" class="cost-breakdown" style="display: none;">
+                    <!-- Results will appear here -->
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        const costs = {
+            us: { work: 39000, study: 24000, tourist: 0, residency: 18000 },
+            uk: { work: 35000, study: 22000, tourist: 0, residency: 17000 },
+            germany: { work: 32000, study: 20000, tourist: 0, residency: 16000 },
+            france: { work: 33000, study: 21000, tourist: 0, residency: 16000 },
+            spain: { work: 34000, study: 21000, tourist: 0, residency: 16000 },
+            china: { work: 19000, study: 12000, tourist: 0, residency: 13000 },
+            korea: { work: 15000, study: 10000, tourist: 0, residency: 12000 },
+            thailand: { work: 18000, study: 12000, tourist: 0, residency: 13000 },
+            philippines: { work: 20000, study: 13000, tourist: 0, residency: 14000 },
+            vietnam: { work: 18000, study: 12000, tourist: 0, residency: 13000 },
+            indonesia: { work: 19000, study: 12000, tourist: 0, residency: 13000 },
+            brazil: { work: 36000, study: 23000, tourist: 0, residency: 17000 },
+            argentina: { work: 37000, study: 23000, tourist: 0, residency: 17000 },
+            uruguay: { work: 38000, study: 24000, tourist: 0, residency: 18000 }
+        };
+
+        function calculateCosts() {
+            const country = document.getElementById('country').value;
+            const visaType = document.getElementById('visaType').value;
+
+            if (!country || !visaType) {
+                alert('Please select both country and visa type');
+                return;
+            }
+
+            const total = costs[country][visaType];
+            const visaFee = visaType === 'residency' ? 8000 : (visaType === 'tourist' ? 0 : 4000);
+            const other = total - visaFee;
+
+            document.getElementById('costResult').innerHTML = `
+                <h2>💴 Cost Breakdown</h2>
+                
+                <div class="cost-row">
+                    <span>Visa Application Fee</span>
+                    <span>¥${visaFee.toLocaleString()}</span>
+                </div>
+                <div class="cost-row">
+                    <span>Document Authentication & Translation</span>
+                    <span>¥${Math.round(other * 0.4).toLocaleString()}</span>
+                </div>
+                <div class="cost-row">
+                    <span>Shipping & Processing</span>
+                    <span>¥${Math.round(other * 0.3).toLocaleString()}</span>
+                </div>
+                <div class="cost-row">
+                    <span>Other Expenses</span>
+                    <span>¥${Math.round(other * 0.3).toLocaleString()}</span>
+                </div>
+                
+                <div class="cost-row total">
+                    <span>Total Estimated Cost</span>
+                    <span>¥${total.toLocaleString()} (~$${Math.round(total/150)})</span>
+                </div>
+                
+                <p style="color: var(--text-muted); margin-top: 1.5rem; font-size: 0.9rem;">
+                    ⚠️ Costs are estimates. Actual costs may vary based on document requirements and exchange rates.
+                </p>
+            `;
+            document.getElementById('costResult').style.display = 'block';
+        }
+    </script>
+</body>
+</html>
