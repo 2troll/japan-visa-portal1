@@ -1,0 +1,660 @@
+/* Visa Detail Page Styles */
+
+.visa-page {
+    padding-top: 70px;
+}
+
+/* Header Section */
+.visa-header {
+    background: linear-gradient(135deg, var(--primary-light), var(--card-bg));
+    padding: 3rem 0;
+    border-bottom: 1px solid var(--border);
+}
+
+.container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+.breadcrumbs {
+    color: var(--text-muted);
+    margin-bottom: 1.5rem;
+    font-size: 0.9rem;
+}
+
+.breadcrumbs a {
+    color: var(--accent);
+    text-decoration: none;
+}
+
+.breadcrumbs a:hover {
+    text-decoration: underline;
+}
+
+.visa-title {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+}
+
+.visa-title .flag {
+    font-size: 4rem;
+}
+
+.visa-title h1 {
+    font-size: 2rem;
+    margin: 0;
+}
+
+.visa-meta {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    margin-top: 1rem;
+}
+
+.badge {
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 600;
+}
+
+.badge-success {
+    background: var(--success);
+    color: white;
+}
+
+.badge-warning {
+    background: var(--warning);
+    color: black;
+}
+
+.badge-info {
+    background: var(--info);
+    color: white;
+}
+
+.processing-time {
+    color: var(--text-muted);
+}
+
+/* Quick Summary */
+.quick-summary {
+    background: var(--primary);
+    padding: 2rem 0;
+}
+
+.summary-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 1.5rem;
+}
+
+.summary-item {
+    text-align: center;
+    padding: 1.5rem;
+    background: var(--card-bg);
+    border-radius: 12px;
+    border: 1px solid var(--border);
+}
+
+.summary-icon {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+}
+
+.summary-label {
+    color: var(--text-muted);
+    font-size: 0.85rem;
+    margin-bottom: 0.3rem;
+}
+
+.summary-value {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--text);
+}
+
+/* Tab Section */
+.tab-section {
+    padding: 3rem 0;
+}
+
+.tabs {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    margin-bottom: 2rem;
+    border-bottom: 2px solid var(--border);
+    padding-bottom: 1rem;
+}
+
+.tab-btn {
+    padding: 0.8rem 1.5rem;
+    background: transparent;
+    border: 2px solid var(--border);
+    color: var(--text-muted);
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: all 0.3s;
+}
+
+.tab-btn:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+}
+
+.tab-btn.active {
+    background: var(--accent);
+    border-color: var(--accent);
+    color: white;
+}
+
+.tab-content {
+    display: none;
+}
+
+.tab-content.active {
+    display: block;
+}
+
+.tab-content h2 {
+    margin-bottom: 1.5rem;
+    color: var(--accent);
+}
+
+/* Requirements Section */
+.requirement-box {
+    background: linear-gradient(135deg, rgba(76, 175, 80, 0.1), rgba(76, 175, 80, 0.05));
+    border: 2px solid var(--success);
+    border-radius: 12px;
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.requirement-box.not-required {
+    background: linear-gradient(135deg, rgba(33, 150, 243, 0.1), rgba(33, 150, 243, 0.05));
+    border-color: var(--info);
+}
+
+.req-status {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.status-icon {
+    font-size: 2rem;
+}
+
+.req-text h3 {
+    margin: 0;
+    color: var(--success);
+}
+
+.requirement-box.not-required .req-text h3 {
+    color: var(--info);
+}
+
+.req-text p {
+    margin: 0.5rem 0 0;
+    color: var(--text-muted);
+}
+
+.requirement-details {
+    background: var(--card-bg);
+    border-radius: 12px;
+    border: 1px solid var(--border);
+    overflow: hidden;
+}
+
+.detail-row {
+    display: flex;
+    padding: 1rem 1.5rem;
+    border-bottom: 1px solid var(--border);
+}
+
+.detail-row:last-child {
+    border-bottom: none;
+}
+
+.detail-label {
+    width: 200px;
+    font-weight: 600;
+    color: var(--accent);
+}
+
+.detail-value {
+    flex: 1;
+    color: var(--text);
+}
+
+/* Documents Section */
+.doc-intro {
+    color: var(--text-muted);
+    margin-bottom: 1.5rem;
+}
+
+.document-checklist {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+.doc-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    padding: 1rem 1.5rem;
+    background: var(--card-bg);
+    border-radius: 8px;
+    border: 1px solid var(--border);
+}
+
+.doc-checkbox {
+    width: 24px;
+    height: 24px;
+    border: 2px solid var(--accent);
+    border-radius: 4px;
+    flex-shrink: 0;
+    cursor: pointer;
+}
+
+.doc-checkbox:hover {
+    background: rgba(233, 69, 96, 0.1);
+}
+
+.doc-text {
+    flex: 1;
+}
+
+.doc-text strong {
+    display: block;
+    margin-bottom: 0.3rem;
+}
+
+.doc-note {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+}
+
+.doc-summary {
+    display: flex;
+    gap: 3rem;
+    justify-content: center;
+    margin-bottom: 2rem;
+}
+
+.summary-stat {
+    text-align: center;
+}
+
+.stat-number {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: var(--accent);
+}
+
+.stat-label {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+}
+
+.btn-download {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 1rem 2rem;
+    background: var(--success);
+    color: white;
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: 600;
+    transition: opacity 0.3s;
+}
+
+.btn-download:hover {
+    opacity: 0.9;
+}
+
+/* Process Section */
+.process-intro {
+    color: var(--text-muted);
+    margin-bottom: 1.5rem;
+}
+
+.process-steps {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.process-step {
+    display: flex;
+    gap: 1.5rem;
+    padding: 1.5rem;
+    background: var(--card-bg);
+    border-radius: 12px;
+    border: 1px solid var(--border);
+}
+
+.step-number {
+    width: 50px;
+    height: 50px;
+    background: var(--accent);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    font-weight: bold;
+    flex-shrink: 0;
+}
+
+.step-content {
+    flex: 1;
+}
+
+.step-content h3 {
+    margin-bottom: 0.5rem;
+    color: var(--text);
+}
+
+.step-meta {
+    display: flex;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+    margin-top: 0.5rem;
+    font-size: 0.9rem;
+}
+
+.step-location {
+    color: var(--info);
+}
+
+.step-time {
+    color: var(--warning);
+}
+
+.step-cost {
+    color: var(--success);
+}
+
+/* Timeline Section */
+.timeline-section, .costs-section {
+    margin-bottom: 3rem;
+}
+
+.timeline-section h3, .costs-section h3 {
+    color: var(--accent);
+    margin-bottom: 1.5rem;
+}
+
+.timeline-chart {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.timeline-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.timeline-label {
+    width: 200px;
+    font-weight: 600;
+}
+
+.timeline-bar {
+    flex: 1;
+    height: 30px;
+    background: var(--card-bg);
+    border-radius: 15px;
+    overflow: hidden;
+}
+
+.timeline-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--accent), var(--accent-hover));
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding-right: 1rem;
+    color: white;
+    font-size: 0.85rem;
+    font-weight: 600;
+}
+
+.timeline-total {
+    background: var(--card-bg);
+    padding: 1rem 1.5rem;
+    border-radius: 8px;
+    border: 1px solid var(--border);
+}
+
+.cost-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 1.5rem;
+}
+
+.cost-table th,
+.cost-table td {
+    padding: 1rem;
+    text-align: left;
+    border-bottom: 1px solid var(--border);
+}
+
+.cost-table th {
+    background: var(--card-bg);
+    color: var(--accent);
+    font-weight: 600;
+}
+
+.cost-table td:last-child {
+    text-align: right;
+    font-weight: 600;
+}
+
+.cost-total-box {
+    background: var(--card-bg);
+    padding: 1.5rem;
+    border-radius: 12px;
+    border: 2px solid var(--accent);
+}
+
+.cost-total-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 1.2rem;
+}
+
+.cost-yen {
+    color: var(--accent);
+    font-weight: bold;
+}
+
+.cost-usd {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+}
+
+/* Residency Section */
+.residency-path {
+    background: var(--card-bg);
+    padding: 2rem;
+    border-radius: 12px;
+    border: 1px solid var(--border);
+}
+
+.residency-path h3 {
+    color: var(--accent);
+    margin-bottom: 1.5rem;
+}
+
+.residency-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.residency-item {
+    text-align: center;
+}
+
+.residency-item .value {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: var(--accent);
+}
+
+.residency-item .label {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+}
+
+.residency-description {
+    background: rgba(233, 69, 96, 0.1);
+    padding: 1.5rem;
+    border-radius: 8px;
+    border-left: 4px solid var(--accent);
+}
+
+.residency-description h4 {
+    margin-bottom: 0.5rem;
+    color: var(--accent);
+}
+
+.residency-description p {
+    margin: 0;
+}
+
+/* FAQ Section */
+.faq-item {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    margin-bottom: 1rem;
+    overflow: hidden;
+}
+
+.faq-question {
+    padding: 1rem 1.5rem;
+    background: var(--primary-light);
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.faq-question::after {
+    content: '+';
+    font-size: 1.5rem;
+    color: var(--accent);
+}
+
+.faq-item.active .faq-question::after {
+    content: '-';
+}
+
+.faq-answer {
+    padding: 1rem 1.5rem;
+    color: var(--text-muted);
+    display: none;
+}
+
+.faq-item.active .faq-answer {
+    display: block;
+}
+
+/* Related Countries */
+.related-countries {
+    background: var(--primary-light);
+    padding: 3rem 0;
+}
+
+.related-countries h2 {
+    margin-bottom: 1.5rem;
+    color: var(--accent);
+}
+
+.related-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+}
+
+.related-link {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 1rem;
+    background: var(--card-bg);
+    border-radius: 8px;
+    color: var(--text);
+    text-decoration: none;
+    transition: all 0.3s;
+}
+
+.related-link:hover {
+    background: var(--accent);
+    transform: translateX(5px);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .visa-title {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .visa-title .flag {
+        font-size: 3rem;
+    }
+    
+    .visa-title h1 {
+        font-size: 1.5rem;
+    }
+    
+    .detail-row {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+    
+    .detail-label {
+        width: auto;
+    }
+    
+    .summary-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .tabs {
+        flex-direction: column;
+    }
+    
+    .tab-btn {
+        width: 100%;
+    }
+    
+    .process-step {
+        flex-direction: column;
+    }
+    
+    .step-meta {
+        flex-direction: column;
+        gap: 0.3rem;
+    }
+}

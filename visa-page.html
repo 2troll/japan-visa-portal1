@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title id="page-title">Visa Information - Japan Visa Guide</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="visa-styles.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo">
+                <span class="logo-icon">🇯🇵</span>
+                <span>JapanVisaGuide</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="work-visa-guide.html">Work</a></li>
+                <li><a href="study-visa-guide.html">Study</a></li>
+                <li><a href="tourist-visa-guide.html">Tourist</a></li>
+                <li><a href="residency-visa-guide.html">Residency</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="visa-page">
+        <!-- Header Section -->
+        <header class="visa-header">
+            <div class="container">
+                <div class="breadcrumbs">
+                    <a href="index.html">Home</a> > <a href="#" id="category-link">Visa Category</a> > <span id="country-name">Country</span>
+                </div>
+                <div class="visa-title">
+                    <div class="flag" id="country-flag">🇯🇵</div>
+                    <h1><span id="header-country">Country</span> → Japan <span id="header-visa">Visa Type</span></h1>
+                    <div class="visa-meta">
+                        <span class="badge" id="visa-badge">Visa Required</span>
+                        <span class="processing-time" id="processing-time">⏱️ Processing: X weeks</span>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Quick Summary Card -->
+        <section class="quick-summary">
+            <div class="container">
+                <div class="summary-grid">
+                    <div class="summary-item">
+                        <div class="summary-icon">📋</div>
+                        <div class="summary-label">Visa Type</div>
+                        <div class="summary-value" id="summary-visa-type">Loading...</div>
+                    </div>
+                    
+                    <div class="summary-item">
+                        <div class="summary-icon">💴</div>
+                        <div class="summary-label">Cost</div>
+                        <div class="summary-value" id="summary-cost">Loading...</div>
+                    </div>
+                    
+                    <div class="summary-item">
+                        <div class="summary-icon">📅</div>
+                        <div class="summary-label">Validity</div>
+                        <div class="summary-value" id="summary-validity">Loading...</div>
+                    </div>
+                    
+                    <div class="summary-item">
+                        <div class="summary-icon">⏱️</div>
+                        <div class="summary-label">Processing Time</div>
+                        <div class="summary-value" id="summary-processing">Loading...</div>
+                    </div>
+                    
+                    <div class="summary-item">
+                        <div class="summary-icon">🔄</div>
+                        <div class="summary-label">Extension</div>
+                        <div class="summary-value" id="summary-extension">Loading...</div>
+                    </div>
+                    
+                    <div class="summary-item">
+                        <div class="summary-icon">📄</div>
+                        <div class="summary-label">Documents</div>
+                        <div class="summary-value" id="summary-documents">Loading...</div>
+                    </div>
+                    
+                </div>
+            </div>
+        </section>
+
+        <!-- Tab Navigation -->
+        <section class="tab-section">
+            <div class="container">
+                <div class="tabs">
+                    <button class="tab-btn active" data-tab="requirements">Requirements</button>
+                    <button class="tab-btn" data-tab="documents">Documents</button>
+                    <button class="tab-btn" data-tab="process">Process</button>
+                    <button class="tab-btn" data-tab="timeline">Timeline & Costs</button>
+                    <button class="tab-btn" data-tab="residency">Residency Path</button>
+                    <button class="tab-btn" data-tab="faq">FAQ</button>
+                </div>
+
+                <!-- Tab Content: Requirements -->
+                <div class="tab-content active" id="requirements-tab">
+                    <h2>Visa Requirements</h2>
+                    
+                    <div class="requirement-box" id="visa-required-box">
+                        <div class="req-status">
+                            <span class="status-icon">✅</span>
+                            <div class="req-text">
+                                <h3>Visa Required</h3>
+                                <p>Citizens of this country must obtain a visa before entering Japan.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="requirement-details">
+                        <div class="detail-row">
+                            <div class="detail-label">Visa Type</div>
+                            <div class="detail-value" id="req-visa-type">-</div>
+                        </div>
+                        
+                        <div class="detail-row">
+                            <div class="detail-label">Visa Code</div>
+                            <div class="detail-value" id="req-visa-code">-</div>
+                        </div>
+                        
+                        <div class="detail-row">
+                            <div class="detail-label">Processing Time</div>
+                            <div class="detail-value" id="req-processing">-</div>
+                        </div>
+                        
+                        <div class="detail-row">
+                            <div class="detail-label">Application Fee</div>
+                            <div class="detail-value" id="req-fee">-</div>
+                        </div>
+                        
+                        <div class="detail-row">
+                            <div class="detail-label">Visa Validity</div>
+                            <div class="detail-value" id="req-validity">-</div>
+                        </div>
+                        
+                        <div class="detail-row">
+                            <div class="detail-label">Extension Possible</div>
+                            <div class="detail-value" id="req-extension">-</div>
+                        </div>
+                        
+                    </div>
+                </div>
+
+                <!-- Tab Content: Documents -->
+                <div class="tab-content" id="documents-tab">
+                    <h2>Required Documents</h2>
+                    
+                    <p class="doc-intro">Prepare the following documents before starting your application:</p>
+                    
+                    <div class="document-checklist" id="document-list">
+                        <!-- Documents will be inserted here -->
+                    </div>
+                    
+                    <div class="doc-summary">
+                        <div class="summary-stat">
+                            <div class="stat-number" id="doc-count">0</div>
+                            <div class="stat-label">Total Documents Required</div>
+                        </div>
+                        
+                        <div class="summary-stat">
+                            <div class="stat-number" id="prep-time">0</div>
+                            <div class="stat-label">Estimated Preparation Time</div>
+                        </div>
+                        
+                    </div>
+                    
+                    <a href="#" class="btn-download" id="download-checklist">📥 Download Document Checklist (PDF)</a>
+                </div>
+
+                <!-- Tab Content: Process -->
+                <div class="tab-content" id="process-tab">
+                    <h2>Application Process</h2>
+                    
+                    <p class="process-intro">Follow these steps in order to apply for your visa:</p>
+                    
+                    <div class="process-steps" id="process-list">
+                        <!-- Steps will be inserted here -->
+                    </div>
+                </div>
+
+                <!-- Tab Content: Timeline & Costs -->
+                <div class="tab-content" id="timeline-tab">
+                    <h2>Timeline & Cost Breakdown</h2>
+                    
+                    <div class="timeline-section">
+                        <h3>Processing Timeline</h3>
+                        
+                        <div class="timeline-chart" id="timeline-chart">
+                            <!-- Timeline bars will be inserted here -->
+                        </div>
+                        
+                        <div class="timeline-total">
+                            <strong>Total Timeline:</strong> <span id="timeline-total">-</span>
+                        </div>
+                    </div>
+                    
+                    <div class="costs-section">
+                        <h3>Cost Breakdown</h3>
+                        
+                        <div class="cost-table" id="cost-table">
+                            <!-- Costs will be inserted here -->
+                        </div>
+                        
+                        <div class="cost-total-box">
+                            <div class="cost-total-row">
+                                <span>Total Estimated Cost:</span>
+                                <span class="cost-yen" id="total-cost-yen">-</span>
+                                <span class="cost-usd" id="total-cost-usd">-</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tab Content: Residency Path -->
+                <div class="tab-content" id="residency-tab">
+                    <h2>Path to Permanent Residency</h2>
+                    
+                    <div class="residency-info" id="residency-content">
+                        <!-- Residency info will be inserted here -->
+                    </div>
+                </div>
+
+                <!-- Tab Content: FAQ -->
+                <div class="tab-content" id="faq-tab">
+                    <h2>Frequently Asked Questions</h2>
+                    
+                    <div class="faq-list" id="faq-content">
+                        <!-- FAQ will be inserted here -->
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Related Countries -->
+        <section class="related-countries">
+            <div class="container">
+                <h2>Explore Other Countries</h2>
+                
+                <div class="related-grid" id="related-countries">
+                    <!-- Related country links will be inserted here -->
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-logo">
+                <span class="logo-icon">🇯🇵</span>
+                <span>JapanVisaGuide</span>
+            </div>
+            <p class="footer-disclaimer">Disclaimer: This portal provides general information only. Always verify requirements with official Japanese immigration authorities.</p>
+            <p class="footer-copyright">© 2026 Japan Visa Guide Portal. Built with 🎯 by Luigi.</p>
+        </div>
+    </footer>
+
+    <script src="visa-data.js"></script>
+    <script>
+        // Tab switching functionality
+        document.querySelectorAll('.tab-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+                document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+                
+                btn.classList.add('active');
+                document.getElementById(btn.dataset.tab + '-tab').classList.add('active');
+            });
+        });
+    </script>
+    <script src="visa-renderer.js"></script>
+</body>
+</html>
